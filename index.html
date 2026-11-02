@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Mission Game – Tim's Abenteuer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Mission Game Startseite"><span class="brand-icon">⚔️</span><span>MISSION<span class="brand-muted"> GAME</span></span></a>
+      <div class="top-stats">
+        <span class="stat gold">🪙 <b id="gold">0</b> Gold</span>
+        <span class="stat">❤️ <b id="hp">20 / 20</b></span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow" id="eyebrow">DEIN ABENTEUER BEGINNT</p>
+        <h1 id="scene-title">Bereit für deine erste Mission?</h1>
+        <p id="scene-text">Tim wartet schon auf dich. Starte das Spiel und entdecke deine Welt.</p>
+        <div class="hero-actions" id="scene-actions">
+          <button class="button primary" id="start-button">Spiel starten <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+      <div class="scene-art" id="scene-art" aria-hidden="true"><span class="sun"></span><span class="mountain mountain-back"></span><span class="mountain mountain-front"></span><span class="little-hero">🧙</span></div>
+    </section>
+
+    <section class="content-grid">
+      <section class="panel story-panel">
+        <div class="panel-heading"><div><p class="eyebrow">ABENTEUER-LOG</p><h2>Was passiert?</h2></div><span class="live-dot"></span></div>
+        <div id="log" class="log" aria-live="polite"><p class="log-entry muted">Hier erscheinen deine Abenteuer und Entscheidungen.</p></div>
+      </section>
+
+      <aside class="panel inventory-panel">
+        <div class="panel-heading"><div><p class="eyebrow">DEINE AUSRÜSTUNG</p><h2>Inventar</h2></div><span class="inventory-icon">🎒</span></div>
+        <div class="inventory-items">
+          <div class="inventory-item"><span class="item-emoji">🍎</span><span class="item-name">Apfel<small>Stellt 2 HP wieder her</small></span><b id="apple-count">0</b><button class="small-button" id="use-apple" disabled>Nutzen</button></div>
+          <div class="inventory-item"><span class="item-emoji">🥩</span><span class="item-name">Steak<small>Stellt 4 HP wieder her</small></span><b id="steak-count">0</b><button class="small-button" id="use-steak" disabled>Nutzen</button></div>
+          <div class="inventory-item"><span class="item-emoji">🗝️</span><span class="item-name">Welten-Schlüssel<small>Öffnet eine neue Welt</small></span><b id="key-count">0</b></div>
+        </div>
+        <div class="inventory-footer"><span>Dein Fortschritt wird automatisch gespeichert.</span><button id="reset-button" class="text-button">Neu starten</button></div>
+      </aside>
+    </section>
+
+    <section class="panel shop-panel" id="shop-panel">
+      <div class="panel-heading"><div><p class="eyebrow">DORFPLATZ</p><h2>Der Shop</h2></div><span class="inventory-icon">🏪</span></div>
+      <p class="section-description">Bereite dich auf deine nächste Mission vor. Du kannst jederzeit im Dorf einkaufen.</p>
+      <div class="shop-items">
+        <article class="shop-item"><div class="shop-emoji">🍎</div><div class="shop-info"><h3>Apfel</h3><p>Heilt 2 HP</p></div><div class="shop-buy"><b>1 🪙</b><button class="button secondary buy-button" data-buy="apple">Kaufen</button></div></article>
+        <article class="shop-item"><div class="shop-emoji">🥩</div><div class="shop-info"><h3>Steak</h3><p>Heilt 4 HP</p></div><div class="shop-buy"><b>2 🪙</b><button class="button secondary buy-button" data-buy="steak">Kaufen</button></div></article>
+        <article class="shop-item"><div class="shop-emoji">🗝️</div><div class="shop-info"><h3>Welten-Schlüssel</h3><p>Schaltet die nächste Welt frei</p></div><div class="shop-buy"><b>1.000 🪙</b><button class="button secondary buy-button" data-buy="key">Kaufen</button></div></article>
+      </div>
+    </section>
+
+    <footer><span>Ein kleines Abenteuer von dir – umgesetzt für den Browser.</span><a href="https://github.com/antonfischle5/mission-game" target="_blank" rel="noreferrer">Quellcode auf GitHub ↗</a></footer>
+  </main>
+  <dialog id="confirm-reset">
+    <form method="dialog" class="dialog-content">
+      <h2>Neu anfangen?</h2><p>Dein gespeicherter Fortschritt wird gelöscht. Möchtest du wirklich neu starten?</p>
+      <div class="hero-actions"><button class="button secondary" value="cancel">Abbrechen</button><button class="button danger" id="confirm-reset-button" value="confirm">Ja, neu starten</button></div>
+    </form>
+  </dialog>
+</body>
+</html>
